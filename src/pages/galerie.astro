@@ -1,0 +1,136 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const sections = [
+  {
+    title: "Fete du Timbre 2026",
+    folder: "fete-du-timbre-2026",
+    images: [
+      "fete-du-timbre-2026.jpg",
+      "fete-du-timbre-2026-1.jpg",
+      "fete-du-timbre-2026-2.jpg",
+      "fete-du-timbre-2026-3.jpg",
+      "fete-du-timbre-2026-4.jpg",
+      "fete-du-timbre-2026-5.jpg",
+      "fete-du-timbre-2026-6.jpg"
+    ]
+  },
+  {
+    title: "Journees du Timbre FFAP",
+    folder: "journees-timbre",
+    images: [
+      "journee-timbre-1939.jpg",
+      "journee-timbre-ffap-1.jpg","journee-timbre-ffap-2.jpg","journee-timbre-ffap-3.jpg","journee-timbre-ffap-4.jpg","journee-timbre-ffap-5.jpg",
+      "journee-timbre-ffap-6.jpg","journee-timbre-ffap-7.jpg","journee-timbre-ffap-8.jpg","journee-timbre-ffap-9.jpg","journee-timbre-ffap-10.jpg",
+      "journee-timbre-ffap-11.jpg","journee-timbre-ffap-13.jpg","journee-timbre-ffap-14.jpg","journee-timbre-ffap-15.jpg","journee-timbre-ffap-16.jpg",
+      "journee-timbre-ffap-17.jpg","journee-timbre-ffap-18.jpg","journee-timbre-ffap-19.jpg","journee-timbre-ffap-20.jpg"
+    ]
+  },
+  {
+    title: "Bonaparte a Valence",
+    folder: "bonaparte",
+    images: [
+      "bonaparte-valence-1.jpg","bonaparte-valence-2.jpg","bonaparte-valence-3.jpg","bonaparte-valence-4.jpg",
+      "bonaparte-valence-5.jpg","bonaparte-valence-6.jpg","bonaparte-valence-7.jpg","bonaparte-valence-8.jpg",
+      "bonaparte-valence-9.jpg","bonaparte-valence-10.jpg","bonaparte-valence-11.jpg","bonaparte-valence-12.jpg"
+    ]
+  },
+  {
+    title: "Artistes de la chanson",
+    folder: "chanteurs",
+    images: [
+      "Chanteurs_Balavoine.jpg","Chanteurs_Becaud.jpg","Chanteurs_Nougaro.jpg",
+      "Chanteurs_Reggiani.jpg","Chanteurs_Renard.jpg","Chanteurs_Salvador.jpg"
+    ]
+  },
+  {
+    title: "Enveloppes 100 ans",
+    folder: "enveloppes",
+    images: [
+      "Enveloppe 100 ans - 1.jpg","Enveloppe 100 ans - 2.jpg",
+      "Enveloppe 100 ans - 3.jpg","Enveloppe 100 ans - 4.jpg"
+    ]
+  }
+];
+
+const allImages = sections.flatMap(s => s.images.map(img => "/galerie/" + s.folder + "/" + encodeURIComponent(img)));
+---
+
+<Layout title="Galerie - APV Valence">
+
+  <section class="px-6 pt-16 pb-10 md:pt-24 md:pb-12 text-center">
+    <div class="max-w-2xl mx-auto">
+      <p class="page-subtitle">Souvenirs et productions</p>
+      <h1 class="page-title">Galerie</h1>
+      <p class="body-text">
+        Cliquez sur une image pour l agrandir, puis utilisez les fleches.
+      </p>
+    </div>
+  </section>
+
+  {sections.map((section) => (
+    <section class="px-6 pb-14">
+      <div class="max-w-5xl mx-auto">
+        <h2 class="section-title mb-5">{section.title}</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          {section.images.map((img) => {
+            const src = "/galerie/" + section.folder + "/" + encodeURIComponent(img);
+            return (
+              <button type="button" class="gallery-btn stamp-card overflow-hidden p-0 text-left w-full hover:shadow-md transition" data-src={src}>
+                <div class="w-full h-44 bg-stone-50 grid place-items-center p-3">
+                  <img src={src} alt={section.title} class="max-h-40 max-w-full object-contain pointer-events-none" loading="lazy" />
+                </div>
+              </button>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  ))}
+
+  <div id="lb" class="fixed inset-0 bg-black/90 z-[100] hidden items-center justify-center">
+    <button type="button" id="lb-close" class="absolute top-4 right-5 text-white text-4xl leading-none hover:text-stone-300">&times;</button>
+    <button type="button" id="lb-prev" class="absolute left-3 md:left-6 text-white text-4xl hover:text-stone-300 px-2">&#8249;</button>
+    <button type="button" id="lb-next" class="absolute right-3 md:right-6 text-white text-4xl hover:text-stone-300 px-2">&#8250;</button>
+    <img id="lb-img" src="" alt="" class="max-h-[85vh] max-w-[85vw] object-contain" />
+  </div>
+
+  <script is:inline define:vars={{ allImages }}>
+    (function () {
+      var lb = document.getElementById('lb');
+      var lbImg = document.getElementById('lb-img');
+      var idx = 0;
+      function openAt(i) {
+        idx = i;
+        lbImg.src = allImages[idx];
+        lb.classList.remove('hidden');
+        lb.classList.add('flex');
+      }
+      function closeLb() {
+        lb.classList.add('hidden');
+        lb.classList.remove('flex');
+        lbImg.src = '';
+      }
+      function prev() { openAt((idx - 1 + allImages.length) % allImages.length); }
+      function next() { openAt((idx + 1) % allImages.length); }
+      document.querySelectorAll('.gallery-btn').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var src = btn.getAttribute('data-src');
+          var i = allImages.indexOf(src);
+          openAt(i >= 0 ? i : 0);
+        });
+      });
+      document.getElementById('lb-close').addEventListener('click', closeLb);
+      document.getElementById('lb-prev').addEventListener('click', function (e) { e.stopPropagation(); prev(); });
+      document.getElementById('lb-next').addEventListener('click', function (e) { e.stopPropagation(); next(); });
+      lb.addEventListener('click', function (e) { if (e.target === lb) closeLb(); });
+      document.addEventListener('keydown', function (e) {
+        if (lb.classList.contains('hidden')) return;
+        if (e.key === 'Escape') closeLb();
+        if (e.key === 'ArrowLeft') prev();
+        if (e.key === 'ArrowRight') next();
+      });
+    })();
+  </script>
+
+</Layout>

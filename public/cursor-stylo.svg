@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+  <!-- ombre legere -->
+  <path d="M22 2 L10 22 L12 28 L14 24 L26 6 Z" fill="#000000" opacity="0.12" transform="translate(1,1)"/>
+  <!-- corps -->
+  <path d="M22 2 L10 22 L12 28 L14 24 L26 6 Z" fill="#1e3a5f"/>
+  <!-- bande metal -->
+  <path d="M20 5 L14 16 L16 17 L22 6 Z" fill="#c0c0c0"/>
+  <!-- plume doree -->
+  <path d="M22 2 L26 6 L20 8 L18 4 Z" fill="#a67443"/>
+  <!-- pointe -->
+  <path d="M10 22 L12 28 L11 22 Z" fill="#0f2744"/>
+  <!-- fente -->
+  <line x1="22" y1="3" x2="13" y2="18" stroke="#faf7f2" stroke-width="0.7" opacity="0.8"/>
+  <!-- goutte encre -->
+  <circle cx="11" cy="29" r="1.5" fill="#1e3a5f"/>
+</svg>

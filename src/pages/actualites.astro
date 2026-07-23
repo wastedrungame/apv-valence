@@ -1,0 +1,111 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const articles = [
+  {
+    date: "Mars 2026",
+    title: "F&ecirc;te du Timbre 2026",
+    excerpt: "Les 7 et 8 mars 2026 &agrave; la Maison des Associations de Valence.",
+    slug: "fete-du-timbre-2026"
+  },
+  {
+    date: "Juin 2026",
+    title: "Expophil Rh&ocirc;ne-Alpes et centenaire",
+    excerpt: "Les 20 et 21 juin 2026, congr&egrave;s r&eacute;gional et centenaire de l&rsquo;APV.",
+    slug: "expophil-2026"
+  },
+  {
+    date: "Juillet 2025",
+    title: "Paella du 21 juin",
+    excerpt: "Moment convivial chez le pr&eacute;sident : paella, discussions et philat&eacute;lie.",
+    slug: "paella-21-juin"
+  },
+  {
+    date: "Chaque jeudi",
+    title: "R&eacute;unions hebdomadaires",
+    excerpt: "Permanences du jeudi apr&egrave;s-midi &agrave; la Maison de la Vie Associative.",
+    slug: "reunions"
+  }
+];
+
+const presse = [
+  {
+    source: "Le Dauphin&eacute; Lib&eacute;r&eacute;",
+    title: "&laquo; Ce n&rsquo;est pas qu&rsquo;un truc de vieux &raquo; : l&rsquo;association philat&eacute;lique a 100 ans",
+    url: "https://www.ledauphine.com/culture-loisirs/2026/06/17/ce-n-est-pas-qu-un-truc-de-vieux-l-association-philatelique-a-100-ans"
+  },
+  {
+    source: "Le Dauphin&eacute; Lib&eacute;r&eacute;",
+    title: "Philippe Stein s&rsquo;appr&ecirc;te &agrave; prendre la t&ecirc;te de l&rsquo;association",
+    url: "https://www.ledauphine.com/culture-loisirs/2025/02/21/philippe-stein-s-apprete-a-prendre-la-tete-de-l-association-philatelique"
+  },
+  {
+    source: "Le Dauphin&eacute; Lib&eacute;r&eacute;",
+    title: "Timbre et patrimoine &agrave; l&rsquo;h&ocirc;tel de ville",
+    url: "https://www.ledauphine.com/culture-loisirs/2025/09/18/ce-week-end-timbre-et-patrimoine-se-marient-a-l-hotel-de-ville"
+  },
+  {
+    source: "Le Dauphin&eacute; Lib&eacute;r&eacute;",
+    title: "Journ&eacute;e Europ&eacute;enne du Patrimoine",
+    url: "https://www.ledauphine.com/culture-loisirs/2025/09/24/journee-europeenne-du-patrimoine-organise-par-association-philatelique-de-valence-gpso"
+  },
+  {
+    source: "Ville de Valence",
+    title: "Expophil 2026",
+    url: "https://www.valence.fr/evenements/expophil-2026/"
+  },
+  {
+    source: "Ville de Valence",
+    title: "F&ecirc;te du Timbre",
+    url: "https://www.valence.fr/evenements/fete-du-timbre-2/"
+  }
+];
+---
+
+<Layout title="Actualites - APV Valence">
+
+  <section class="px-6 pt-16 pb-12 md:pt-24 md:pb-16 text-center">
+    <div class="max-w-2xl mx-auto">
+      <div class="flex justify-center mb-5">
+        <span class="cancel-mark">APV<br/>1926</span>
+      </div>
+      <p class="page-subtitle">Informations</p>
+      <h1 class="page-title">Actualit&eacute;s</h1>
+      <p class="body-text">
+        Les nouvelles de l&rsquo;Association Philat&eacute;lique de Valence.
+      </p>
+    </div>
+  </section>
+
+  <section class="px-6 pb-16">
+    <div class="max-w-3xl mx-auto space-y-5">
+      {articles.map((article) => (
+        <article class="stamp-card postal-frame paper p-7 hover:shadow-md transition">
+          <p class="label" set:html={article.date} />
+          <h2 class="font-serif text-xl font-semibold text-stone-900 mb-3">
+            <a href={"/actualites/" + article.slug} class="hover:text-primary-700 transition" set:html={article.title} />
+          </h2>
+          <p class="body-text mb-4" set:html={article.excerpt} />
+          <a href={"/actualites/" + article.slug} class="text-[13px] font-medium text-primary-700 hover:text-primary-900 transition">
+            Lire l&rsquo;article →
+          </a>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="px-6 pb-20">
+    <div class="max-w-3xl mx-auto">
+      <h2 class="section-title mb-6 text-center">L&rsquo;APV dans la presse</h2>
+      <div class="space-y-4">
+        {presse.map((item) => (
+          <a href={item.url} target="_blank" rel="noopener" class="block perforated p-5 hover:shadow-sm transition">
+            <p class="label" set:html={item.source} />
+            <p class="text-[15px] text-stone-800 font-medium" set:html={item.title} />
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+</Layout>

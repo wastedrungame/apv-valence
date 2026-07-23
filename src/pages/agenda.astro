@@ -1,0 +1,44 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Agenda - APV Valence">
+
+  <section class="px-6 pt-16 pb-10 md:pt-24 md:pb-12 text-center">
+    <div class="max-w-2xl mx-auto">
+      <p class="page-subtitle">Rendez-vous</p>
+      <h1 class="page-title">Agenda</h1>
+      <p class="body-text">Les r&eacute;unions et &eacute;v&eacute;nements de l&apos;association.</p>
+    </div>
+  </section>
+
+  <section class="px-6 pb-10">
+    <div class="max-w-3xl mx-auto overflow-hidden stamp-card postal-frame">
+      <img src="/img-agenda.jpg" alt="Agenda philatelique" class="w-full h-auto max-h-[320px] object-cover object-center" />
+    </div>
+  </section>
+
+  <section class="px-6 pb-20">
+    <div class="max-w-2xl mx-auto space-y-6">
+      <div class="stamp-card postal-frame paper p-8">
+        <p class="label">Chaque semaine</p>
+        <h2 class="font-serif text-xl font-semibold text-stone-900 mb-3">R&eacute;unions du jeudi</h2>
+        <p class="body-text">
+          Tous les jeudis apr&egrave;s-midi<br />
+          Maison de la Vie Associative<br />
+          74 route de Mont&eacute;lier, 26000 Valence
+        </p>
+      </div>
+      <div class="stamp-card postal-frame paper p-8">
+        <p class="label">20 et 21 juin 2026</p>
+        <h2 class="font-serif text-xl font-semibold text-stone-900 mb-3">Expophil Rh&ocirc;ne-Alpes</h2>
+        <p class="body-text mb-4">
+          Congr&egrave;s r&eacute;gional et centenaire de l&apos;APV<br />
+          Maison de la Vie Associative, Valence
+        </p>
+        <a href="/actualites/expophil-2026" class="text-[13px] font-medium">En savoir plus →</a>
+      </div>
+    </div>
+  </section>
+
+</Layout>

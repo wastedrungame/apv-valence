@@ -1,0 +1,68 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const photos = [
+  "fete-du-timbre-2026.jpg",
+  "fete-du-timbre-2026-1.jpg",
+  "fete-du-timbre-2026-3.jpg",
+  "fete-du-timbre-2026-2.jpg",
+  "fete-du-timbre-2026-4.jpg",
+  "fete-du-timbre-2026-5.jpg",
+  "fete-du-timbre-2026-6.jpg"
+];
+---
+
+<Layout title="Fete du Timbre 2026 - APV Valence">
+
+  <article class="px-6 pt-16 pb-20 md:pt-24">
+    <div class="max-w-3xl mx-auto">
+      
+      <p class="page-subtitle mb-4">Mars 2026</p>
+      <h1 class="page-title mb-8">F&ecirc;te du Timbre 2026</h1>
+
+      <div class="space-y-5 body-text mb-12">
+        <p>
+          La F&ecirc;te du Timbre 2026 s&rsquo;est d&eacute;roul&eacute;e les <strong>7 et 8 mars 2026</strong>, de 9 h &agrave; 18 h, &agrave; la Maison des Associations de Valence.
+        </p>
+        <p>
+          Organis&eacute;e par l&rsquo;Association Philat&eacute;lique de Valence en partenariat avec La Poste, cette manifestation a permis de d&eacute;couvrir le timbre, la carte, la carte FFAP, le bloc feuillet, l&rsquo;entier postal, ainsi que la petite et la grande enveloppe.
+        </p>
+        <p>
+          Une grande bourse multi-collections accompagnait l&rsquo;&eacute;v&eacute;nement : timbres, lettres, cartes postales, min&eacute;raux, billets, pi&egrave;ces, jouets, f&egrave;ves et autres objets de collection.
+        </p>
+        <p>
+          Entr&eacute;e libre.
+        </p>
+      </div>
+
+      <h2 class="section-title mb-6 text-center">En images</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-12">
+        {photos.map((img) => (
+          <a 
+            href={"/galerie/fete-du-timbre-2026/" + encodeURIComponent(img)} 
+            target="_blank" 
+            rel="noopener"
+            class="block bg-white border border-stone-200/80 rounded-xl shadow-sm hover:shadow-md transition overflow-hidden"
+          >
+            <div class="w-full h-56 bg-stone-50 grid place-items-center p-4">
+              <img 
+                src={"/galerie/fete-du-timbre-2026/" + encodeURIComponent(img)} 
+                alt="Fete du Timbre 2026" 
+                class="max-h-48 max-w-full w-auto h-auto object-contain"
+                loading="lazy"
+              />
+            </div>
+          </a>
+        ))}
+      </div>
+
+      <div class="pt-6 border-t border-stone-200 text-center">
+        <a href="/actualites" class="text-[13px] font-medium text-primary-700 hover:text-primary-900 transition">
+          ← Retour aux actualit&eacute;s
+        </a>
+      </div>
+
+    </div>
+  </article>
+
+</Layout>
