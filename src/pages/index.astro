@@ -8,7 +8,7 @@ const base = import.meta.env.BASE_URL;
   <section class="px-6 pt-10 md:pt-14">
     <div class="max-w-5xl mx-auto overflow-hidden stamp-card postal-frame">
       <img
-        src={base + "hero-accueil.jpg"}
+        src={`${base}hero-accueil.jpg`}
         alt="Philatelie - Association Philatelique de Valence"
         class="w-full h-auto max-h-[420px] object-cover object-center"
       />
@@ -17,9 +17,7 @@ const base = import.meta.env.BASE_URL;
 
   <section class="px-6 pt-12 pb-16 md:pt-16 md:pb-20 text-center">
     <div class="max-w-3xl mx-auto">
-      <p class="page-subtitle tracking-[0.28em] mb-6">
-        Depuis 1926 · Centenaire 2026
-      </p>
+      <p class="page-subtitle tracking-[0.28em] mb-6">Depuis 1926 · Centenaire 2026</p>
       <h1 class="font-serif text-[2.4rem] sm:text-[3.2rem] md:text-[3.8rem] font-semibold text-stone-900 leading-[1.1] mb-6">
         Association<br />Philat&eacute;lique de Valence
       </h1>
@@ -31,77 +29,43 @@ const base = import.meta.env.BASE_URL;
         Ici, on &eacute;change, on apprend, on d&eacute;couvre — d&eacute;butants comme confirm&eacute;s.
       </p>
       <div class="flex flex-col sm:flex-row gap-3 justify-center">
-        <a href="/adhesion" class="inline-flex items-center justify-center border border-stone-400 bg-[#faf7f2] text-stone-800 px-9 py-3.5 rounded-lg text-[13px] font-medium hover:bg-white transition">
-          Nous rejoindre
-        </a>
-        <a href="/agenda" class="inline-flex items-center justify-center border border-stone-300 bg-white text-stone-700 px-9 py-3.5 rounded-lg text-[13px] font-medium hover:bg-stone-50 transition">
-          Prochains rendez-vous
-        </a>
+        <a href={`${base}adhesion`} class="inline-flex items-center justify-center border border-stone-400 bg-[#faf7f2] text-stone-800 px-9 py-3.5 rounded-lg text-[13px] font-medium hover:bg-white transition">Nous rejoindre</a>
+        <a href={`${base}agenda`} class="inline-flex items-center justify-center border border-stone-300 bg-white text-stone-700 px-9 py-3.5 rounded-lg text-[13px] font-medium hover:bg-stone-50 transition">Prochains rendez-vous</a>
       </div>
     </div>
   </section>
 
   <section class="px-6 pb-14">
     <div class="max-w-xl mx-auto">
-      <a
-        href="https://www.ledauphine.com/culture-loisirs/2026/06/17/ce-n-est-pas-qu-un-truc-de-vieux-l-association-philatelique-a-100-ans"
-        target="_blank"
-        rel="noopener"
-        class="block text-center perforated bg-white/80 py-8 px-6 hover:shadow-sm transition"
-      >
-        <p class="font-serif text-[1.2rem] md:text-[1.35rem] text-stone-800 leading-relaxed italic mb-3">
-          &laquo;&nbsp;Ce n&rsquo;est pas qu&rsquo;un truc de vieux.&nbsp;&raquo;
-        </p>
-        <p class="text-[11px] text-stone-400 tracking-wide uppercase">
-          Le Dauphin&eacute; Lib&eacute;r&eacute; — &agrave; propos de l&rsquo;APV
-        </p>
+      <a href="https://www.ledauphine.com/culture-loisirs/2026/06/17/ce-n-est-pas-qu-un-truc-de-vieux-l-association-philatelique-a-100-ans" target="_blank" rel="noopener" class="block text-center perforated bg-white/80 py-8 px-6 hover:shadow-sm transition">
+        <p class="font-serif text-[1.2rem] md:text-[1.35rem] text-stone-800 leading-relaxed italic mb-3">&laquo;&nbsp;Ce n&rsquo;est pas qu&rsquo;un truc de vieux.&nbsp;&raquo;</p>
+        <p class="text-[11px] text-stone-400 tracking-wide uppercase">Le Dauphin&eacute; Lib&eacute;r&eacute; — &agrave; propos de l&rsquo;APV</p>
       </a>
     </div>
   </section>
 
   <section class="px-6 pb-20">
     <div class="max-w-2xl mx-auto stamp-card postal-frame paper p-10 md:p-12 text-center">
-      <p class="text-[11px] font-semibold tracking-[0.18em] text-accent-600 uppercase mb-4">
-        &Eacute;v&eacute;nement 2026
-      </p>
-      <h2 class="font-serif text-[1.85rem] md:text-[2.15rem] font-semibold text-stone-900 mb-3">
-        Expophil Rh&ocirc;ne-Alpes
-      </h2>
-      <p class="text-stone-600 mb-1">
-        Congr&egrave;s r&eacute;gional et centenaire de l&rsquo;APV
-      </p>
-      <p class="text-stone-500 text-[14px] mb-8">
-        Samedi 20 et dimanche 21 juin 2026<br />
-        Maison de la Vie Associative - Valence
-      </p>
-      <a href="/actualites/expophil-2026" class="inline-flex text-[13px] font-medium text-primary-700 hover:text-primary-900 transition">
-        D&eacute;couvrir l&rsquo;&eacute;v&eacute;nement
-      </a>
+      <p class="text-[11px] font-semibold tracking-[0.18em] text-accent-600 uppercase mb-4">&Eacute;v&eacute;nement 2026</p>
+      <h2 class="font-serif text-[1.85rem] md:text-[2.15rem] font-semibold text-stone-900 mb-3">Expophil Rh&ocirc;ne-Alpes</h2>
+      <p class="text-stone-600 mb-1">Congr&egrave;s r&eacute;gional et centenaire de l&rsquo;APV</p>
+      <p class="text-stone-500 text-[14px] mb-8">Samedi 20 et dimanche 21 juin 2026<br />Maison de la Vie Associative - Valence</p>
+      <a href={`${base}actualites/expophil-2026`} class="inline-flex text-[13px] font-medium text-primary-700 hover:text-primary-900 transition">D&eacute;couvrir l&rsquo;&eacute;v&eacute;nement</a>
     </div>
   </section>
 
   <section class="px-6 py-20 border-t border-stone-200/60">
     <div class="max-w-5xl mx-auto grid md:grid-cols-2 gap-14 md:gap-20">
       <div>
-        <h2 class="font-serif text-2xl font-semibold text-stone-900 mb-6">
-          Pourquoi nous rejoindre ?
-        </h2>
+        <h2 class="font-serif text-2xl font-semibold text-stone-900 mb-6">Pourquoi nous rejoindre ?</h2>
         <div class="space-y-4 text-[15px] text-stone-600 leading-relaxed">
-          <p>
-            Depuis un si&egrave;cle, l&rsquo;APV r&eacute;unit des amateurs de timbres, d&rsquo;histoire postale, de marcophilie et de cartophilie.
-          </p>
-          <p>
-            On y &eacute;change sans chichi, on montre ses collections, on se conseille. L&rsquo;ambiance est simple, humaine, fid&egrave;le &agrave; l&rsquo;esprit des clubs de passionn&eacute;s.
-          </p>
-          <p>
-            Chaque ann&eacute;e, l&rsquo;association organise la F&ecirc;te du Timbre avec La Poste et participe &agrave; la vie philat&eacute;lique de la r&eacute;gion.
-          </p>
+          <p>Depuis un si&egrave;cle, l&rsquo;APV r&eacute;unit des amateurs de timbres, d&rsquo;histoire postale, de marcophilie et de cartophilie.</p>
+          <p>On y &eacute;change sans chichi, on montre ses collections, on se conseille. L&rsquo;ambiance est simple, humaine, fid&egrave;le &agrave; l&rsquo;esprit des clubs de passionn&eacute;s.</p>
+          <p>Chaque ann&eacute;e, l&rsquo;association organise la F&ecirc;te du Timbre avec La Poste et participe &agrave; la vie philat&eacute;lique de la r&eacute;gion.</p>
         </div>
       </div>
       <div>
-        <h2 class="font-serif text-2xl font-semibold text-stone-900 mb-6">
-          Nous rencontrer
-        </h2>
+        <h2 class="font-serif text-2xl font-semibold text-stone-900 mb-6">Nous rencontrer</h2>
         <div class="stamp-card postal-frame paper p-7 space-y-5 text-[15px]">
           <div>
             <p class="label">R&eacute;unions</p>
@@ -114,9 +78,7 @@ const base = import.meta.env.BASE_URL;
           </div>
           <div>
             <p class="label">Contact</p>
-            <a href="mailto:contact@assophil-valence.net" class="text-primary-700 hover:text-primary-900 transition font-medium whitespace-nowrap">
-              contact@assophil-valence.net
-            </a>
+            <a href="mailto:contact@assophil-valence.net" class="text-primary-700 hover:text-primary-900 transition font-medium whitespace-nowrap">contact@assophil-valence.net</a>
           </div>
         </div>
       </div>
