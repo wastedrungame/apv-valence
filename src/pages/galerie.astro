@@ -53,7 +53,7 @@ const sections = [
   }
 ];
 
-const allImages = sections.flatMap(s => s.images.map(img => "/apv-valence/galerie/" + s.folder + "/" + encodeURIComponent(img)));
+const allImages = sections.flatMap(s => s.images.map(img => "/galerie/" + s.folder + "/" + encodeURIComponent(img)));
 ---
 
 <Layout title="Galerie - APV Valence">
@@ -74,7 +74,7 @@ const allImages = sections.flatMap(s => s.images.map(img => "/apv-valence/galeri
         <h2 class="section-title mb-5">{section.title}</h2>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {section.images.map((img) => {
-            const src = "/apv-valence/galerie/" + section.folder + "/" + encodeURIComponent(img);
+            const src = "/galerie/" + section.folder + "/" + encodeURIComponent(img);
             return (
               <button type="button" class="gallery-btn stamp-card overflow-hidden p-0 text-left w-full hover:shadow-md transition" data-src={src}>
                 <div class="w-full h-44 bg-stone-50 grid place-items-center p-3">
