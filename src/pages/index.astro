@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+const base = import.meta.env.BASE_URL;
 ---
 
 <Layout title="APV - Association Philatelique de Valence">
@@ -7,7 +8,7 @@ import Layout from '../layouts/Layout.astro';
   <section class="px-6 pt-10 md:pt-14">
     <div class="max-w-5xl mx-auto overflow-hidden stamp-card postal-frame">
       <img
-        src="/hero-accueil.jpg"
+        src={base + "hero-accueil.jpg"}
         alt="Philatelie - Association Philatelique de Valence"
         class="w-full h-auto max-h-[420px] object-cover object-center"
       />
