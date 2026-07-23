@@ -1,15 +1,21 @@
 ---
 ---
 <header class="border-b border-stone-200/60 bg-[#faf7f2] sticky top-0 z-50">
-  <div class="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
-    <a href="/" class="flex items-center gap-3">
-      <img src="/logo-apv.png" alt="APV" class="h-10 w-auto object-contain" />
-      <span class="font-serif font-semibold text-stone-900 text-[15px]">APV Valence</span>
-    </a>
+  <div class="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between gap-3">
+    <div class="flex items-center gap-2 min-w-0">
+      <a href="/" class="flex items-center gap-3 shrink-0">
+        <img src="/logo-apv.png" alt="APV" class="h-10 w-auto object-contain" />
+        <span class="font-serif font-semibold text-stone-900 text-[15px]">APV Valence</span>
+      </a>
+      <span class="hidden sm:inline-block text-[10px] font-semibold tracking-[0.12em] uppercase text-[#a67443] border border-[#a67443]/50 rounded-full px-2.5 py-0.5 whitespace-nowrap">
+        100 ans
+      </span>
+    </div>
 
-    <nav class="hidden md:flex items-center gap-5 text-[13px] font-bold text-stone-700">
+    <nav class="hidden md:flex items-center gap-4 lg:gap-5 text-[13px] font-bold text-stone-700">
       <a href="/">Accueil</a>
       <a href="/association">L&apos;Association</a>
+      <a href="/centenaire">Centenaire</a>
       <a href="/actualites">Actualit&eacute;s</a>
       <a href="/agenda">Agenda</a>
       <a href="/galerie">Galerie</a>
@@ -17,18 +23,17 @@
       <a href="/contact">Contact</a>
     </nav>
 
-    <!-- Bouton menu mobile (checkbox CSS) -->
     <label for="nav-toggle" class="md:hidden px-3 py-2 text-[13px] font-bold text-stone-700 border border-stone-300 rounded-md bg-white cursor-pointer select-none">
       Menu
     </label>
   </div>
 
   <input type="checkbox" id="nav-toggle" class="peer sr-only" />
-
   <div class="hidden peer-checked:block md:!hidden border-t border-stone-200 bg-[#faf7f2] px-6 py-4">
     <nav class="flex flex-col gap-3 text-[14px] font-bold text-stone-700">
       <a href="/" class="py-1">Accueil</a>
       <a href="/association" class="py-1">L&apos;Association</a>
+      <a href="/centenaire" class="py-1">Centenaire</a>
       <a href="/actualites" class="py-1">Actualit&eacute;s</a>
       <a href="/agenda" class="py-1">Agenda</a>
       <a href="/galerie" class="py-1">Galerie</a>
