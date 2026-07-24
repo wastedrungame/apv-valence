@@ -1,0 +1,139 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="La Loupe - Jeu philatélique - APV Valence">
+
+  <section class="px-6 pt-16 pb-10 md:pt-24 md:pb-12 text-center">
+    <div class="max-w-2xl mx-auto">
+      <p class="page-subtitle">Jeu philatélique</p>
+      <h1 class="page-title">La Loupe</h1>
+      <p class="body-text">
+        Testez vos connaissances sur les timbres et l’histoire postale.
+      </p>
+    </div>
+  </section>
+
+  <section class="px-6 pb-20">
+    <div class="max-w-2xl mx-auto stamp-card postal-frame paper p-8 md:p-10">
+
+      <div id="quiz" class="space-y-8">
+
+        <!-- Question 1 -->
+        <div class="question" data-correct="b">
+          <p class="font-serif text-lg font-semibold text-stone-900 mb-4">1. En quelle année a été fondée l’Association Philatélique de Valence ?</p>
+          <div class="space-y-2">
+            <button class="answer w-full text-left px-4 py-3 rounded-lg border border-stone-300 hover:bg-stone-50 transition" data-value="a">a) 1918</button>
+            <button class="answer w-full text-left px-4 py-3 rounded-lg border border-stone-300 hover:bg-stone-50 transition" data-value="b">b) 1926</button>
+            <button class="answer w-full text-left px-4 py-3 rounded-lg border border-stone-300 hover:bg-stone-50 transition" data-value="c">c) 1939</button>
+          </div>
+          <p class="feedback mt-3 text-sm hidden"></p>
+        </div>
+
+        <!-- Question 2 -->
+        <div class="question" data-correct="a">
+          <p class="font-serif text-lg font-semibold text-stone-900 mb-4">2. Depuis quand la Fête du Timbre existe-t-elle à Valence ?</p>
+          <div class="space-y-2">
+            <button class="answer w-full text-left px-4 py-3 rounded-lg border border-stone-300 hover:bg-stone-50 transition" data-value="a">a) 1939</button>
+            <button class="answer w-full text-left px-4 py-3 rounded-lg border border-stone-300 hover:bg-stone-50 transition" data-value="b">b) 1945</button>
+            <button class="answer w-full text-left px-4 py-3 rounded-lg border border-stone-300 hover:bg-stone-50 transition" data-value="c">c) 1960</button>
+          </div>
+          <p class="feedback mt-3 text-sm hidden"></p>
+        </div>
+
+        <!-- Question 3 -->
+        <div class="question" data-correct="c">
+          <p class="font-serif text-lg font-semibold text-stone-900 mb-4">3. Quel est le numéro FFAP de l’APV ?</p>
+          <div class="space-y-2">
+            <button class="answer w-full text-left px-4 py-3 rounded-lg border border-stone-300 hover:bg-stone-50 transition" data-value="a">a) VIII-100</button>
+            <button class="answer w-full text-left px-4 py-3 rounded-lg border border-stone-300 hover:bg-stone-50 transition" data-value="b">b) VIII-1926</button>
+            <button class="answer w-full text-left px-4 py-3 rounded-lg border border-stone-300 hover:bg-stone-50 transition" data-value="c">c) VIII-226</button>
+          </div>
+          <p class="feedback mt-3 text-sm hidden"></p>
+        </div>
+
+        <!-- Question 4 -->
+        <div class="question" data-correct="b">
+          <p class="font-serif text-lg font-semibold text-stone-900 mb-4">4. Où se réunissent les membres de l’APV chaque jeudi ?</p>
+          <div class="space-y-2">
+            <button class="answer w-full text-left px-4 py-3 rounded-lg border border-stone-300 hover:bg-stone-50 transition" data-value="a">a) Hôtel de Ville</button>
+            <button class="answer w-full text-left px-4 py-3 rounded-lg border border-stone-300 hover:bg-stone-50 transition" data-value="b">b) Maison de la Vie Associative</button>
+            <button class="answer w-full text-left px-4 py-3 rounded-lg border border-stone-300 hover:bg-stone-50 transition" data-value="c">c) Musée de Valence</button>
+          </div>
+          <p class="feedback mt-3 text-sm hidden"></p>
+        </div>
+
+        <!-- Question 5 -->
+        <div class="question" data-correct="a">
+          <p class="font-serif text-lg font-semibold text-stone-900 mb-4">5. Que signifie « philatélie » ?</p>
+          <div class="space-y-2">
+            <button class="answer w-full text-left px-4 py-3 rounded-lg border border-stone-300 hover:bg-stone-50 transition" data-value="a">a) L’amour des timbres</button>
+            <button class="answer w-full text-left px-4 py-3 rounded-lg border border-stone-300 hover:bg-stone-50 transition" data-value="b">b) L’étude des monnaies</button>
+            <button class="answer w-full text-left px-4 py-3 rounded-lg border border-stone-300 hover:bg-stone-50 transition" data-value="c">c) La collection de cartes postales uniquement</button>
+          </div>
+          <p class="feedback mt-3 text-sm hidden"></p>
+        </div>
+
+      </div>
+
+      <div id="score" class="hidden mt-10 text-center">
+        <p class="font-serif text-2xl font-semibold text-stone-900 mb-2">Votre score</p>
+        <p id="score-text" class="text-lg text-stone-600"></p>
+        <button id="restart" class="mt-6 inline-flex items-center justify-center border border-stone-400 bg-[#faf7f2] text-stone-800 px-8 py-3 rounded-lg text-[13px] font-medium hover:bg-white transition">
+          Recommencer
+        </button>
+      </div>
+
+    </div>
+  </section>
+
+  <script>
+    const questions = document.querySelectorAll('.question');
+    let answered = 0;
+    let correct = 0;
+
+    questions.forEach(q => {
+      const buttons = q.querySelectorAll('.answer');
+      const feedback = q.querySelector('.feedback');
+      const good = q.dataset.correct;
+
+      buttons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          if (q.classList.contains('answered')) return;
+          q.classList.add('answered');
+          answered++;
+
+          const value = btn.dataset.value;
+          if (value === good) {
+            correct++;
+            btn.classList.add('bg-green-100', 'border-green-400');
+            feedback.textContent = 'Bonne réponse !';
+            feedback.classList.remove('hidden');
+            feedback.classList.add('text-green-700');
+          } else {
+            btn.classList.add('bg-red-100', 'border-red-400');
+            feedback.textContent = 'Mauvaise réponse.';
+            feedback.classList.remove('hidden');
+            feedback.classList.add('text-red-700');
+            // highlight correct
+            buttons.forEach(b => {
+              if (b.dataset.value === good) b.classList.add('bg-green-50', 'border-green-300');
+            });
+          }
+
+          if (answered === questions.length) {
+            const scoreEl = document.getElementById('score');
+            const scoreText = document.getElementById('score-text');
+            scoreEl.classList.remove('hidden');
+            scoreText.textContent = `${correct} / ${questions.length}`;
+          }
+        });
+      });
+    });
+
+    document.getElementById('restart')?.addEventListener('click', () => {
+      location.reload();
+    });
+  </script>
+
+</Layout>
