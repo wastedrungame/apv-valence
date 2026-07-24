@@ -4,7 +4,6 @@ import Layout from '../layouts/Layout.astro';
 
 <Layout title="Contact - APV Valence">
 
-  <!-- En-tete simple -->
   <section class="px-6 pt-16 pb-10 md:pt-24 md:pb-12 text-center">
     <div class="max-w-2xl mx-auto">
       <p class="page-subtitle">Nous &eacute;crire</p>
@@ -15,11 +14,10 @@ import Layout from '../layouts/Layout.astro';
     </div>
   </section>
 
-  <!-- Contenu : infos + illustration -->
   <section class="px-6 pb-14">
-    <div class="max-w-3xl mx-auto grid md:grid-cols-[1fr_auto] gap-10 items-center">
+    <div class="max-w-3xl mx-auto grid md:grid-cols-2 gap-10 items-start">
       
-      <!-- Carte infos -->
+      <!-- Infos -->
       <div class="stamp-card postal-frame paper p-8 space-y-6">
         <div>
           <p class="label">Adresse</p>
@@ -41,25 +39,39 @@ import Layout from '../layouts/Layout.astro';
         </div>
       </div>
 
-      <!-- Boite aux lettres -->
-      <div class="flex justify-center">
-        <svg width="100" height="100" viewBox="0 0 88 88" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <ellipse cx="44" cy="80" rx="22" ry="4" fill="#1e3a5f" opacity="0.08"/>
-          <rect x="40" y="62" width="8" height="16" rx="1" fill="#1e3a5f"/>
-          <rect x="14" y="28" width="60" height="36" rx="4" fill="#f7f3ea" stroke="#1e3a5f" stroke-width="2"/>
-          <rect x="14" y="28" width="60" height="10" rx="4" fill="#1e3a5f"/>
-          <rect x="14" y="34" width="60" height="4" fill="#1e3a5f"/>
-          <rect x="28" y="42" width="32" height="4" rx="2" fill="#1e3a5f" opacity="0.85"/>
-          <rect x="52" y="48" width="14" height="12" rx="1.5" fill="#efe9dc" stroke="#1e3a5f" stroke-width="1.5"/>
-          <circle cx="62" cy="54" r="1.5" fill="#a67443"/>
-          <path d="M20 28 L20 14 L34 18 L20 22" fill="#a67443" stroke="#1e3a5f" stroke-width="1"/>
-        </svg>
+      <!-- Formulaire Netlify -->
+      <div class="stamp-card postal-frame paper p-8">
+        <p class="label mb-4">Formulaire de contact</p>
+        <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="space-y-4">
+          <input type="hidden" name="form-name" value="contact" />
+          <p class="hidden">
+            <label>Ne pas remplir : <input name="bot-field" /></label>
+          </p>
+          <div>
+            <label for="name" class="block text-[13px] text-stone-600 mb-1">Nom</label>
+            <input type="text" id="name" name="name" required
+              class="w-full border border-stone-300 rounded-lg px-3 py-2 text-[14px] focus:outline-none focus:border-stone-500" />
+          </div>
+          <div>
+            <label for="email" class="block text-[13px] text-stone-600 mb-1">Email</label>
+            <input type="email" id="email" name="email" required
+              class="w-full border border-stone-300 rounded-lg px-3 py-2 text-[14px] focus:outline-none focus:border-stone-500" />
+          </div>
+          <div>
+            <label for="message" class="block text-[13px] text-stone-600 mb-1">Message</label>
+            <textarea id="message" name="message" rows="4" required
+              class="w-full border border-stone-300 rounded-lg px-3 py-2 text-[14px] focus:outline-none focus:border-stone-500"></textarea>
+          </div>
+          <button type="submit"
+            class="w-full border border-stone-400 bg-[#faf7f2] text-stone-800 px-6 py-3 rounded-lg text-[13px] font-medium hover:bg-white transition">
+            Envoyer
+          </button>
+        </form>
       </div>
 
     </div>
   </section>
 
-  <!-- Carte -->
   <section class="px-6 pb-20">
     <div class="max-w-3xl mx-auto">
       <p class="label mb-3 text-center">Nous trouver</p>
