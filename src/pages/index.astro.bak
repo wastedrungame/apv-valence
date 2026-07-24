@@ -44,13 +44,13 @@ const base = import.meta.env.BASE_URL;
     </div>
   </section>
 
-      <section class="px-6 pb-20">
+  <section class="px-6 pb-20">
     <div class="max-w-2xl mx-auto stamp-card postal-frame paper p-10 md:p-12 text-center">
-      <p class="text-[11px] font-semibold tracking-[0.18em] text-accent-600 uppercase mb-4">Centenaire 1926 — 2026</p>
-      <h2 class="font-serif text-[1.85rem] md:text-[2.15rem] font-semibold text-stone-900 mb-3">100 ans de philatélie à Valence</h2>
-      <p class="text-stone-600 mb-1">Les 20 et 21 juin 2026, l’APV a célébré son centenaire<br />en accueillant le congrès régional Expophil Rhône-Alpes.</p>
-      <p class="text-stone-500 text-[14px] mb-8">Plus de 50 collections exposées, des rencontres<br />et une belle ambiance à la Maison de la Vie Associative.</p>
-      <a href={`${base}actualites/expophil-2026`} class="inline-flex text-[13px] font-medium text-primary-700 hover:text-primary-900 transition">Voir le retour de l’événement</a>
+      <p class="text-[11px] font-semibold tracking-[0.18em] text-accent-600 uppercase mb-4">&Eacute;v&eacute;nement 2026</p>
+      <h2 class="font-serif text-[1.85rem] md:text-[2.15rem] font-semibold text-stone-900 mb-3">Expophil Rh&ocirc;ne-Alpes</h2>
+      <p class="text-stone-600 mb-1">Congr&egrave;s r&eacute;gional et centenaire de l&rsquo;APV</p>
+      <p class="text-stone-500 text-[14px] mb-8">Samedi 20 et dimanche 21 juin 2026<br />Maison de la Vie Associative - Valence</p>
+      <a href={`${base}actualites/expophil-2026`} class="inline-flex text-[13px] font-medium text-primary-700 hover:text-primary-900 transition">D&eacute;couvrir l&rsquo;&eacute;v&eacute;nement</a>
     </div>
   </section>
 
