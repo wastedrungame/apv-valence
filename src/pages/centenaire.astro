@@ -4,6 +4,7 @@ import Layout from '../layouts/Layout.astro';
 
 <Layout title="Centenaire 1926-2026 - APV Valence">
 
+  <!-- Entete -->
   <section class="px-6 pt-16 pb-10 md:pt-24 md:pb-12 text-center">
     <div class="max-w-2xl mx-auto">
       <p class="page-subtitle">1926 — 2026</p>
@@ -14,6 +15,7 @@ import Layout from '../layouts/Layout.astro';
     </div>
   </section>
 
+  <!-- Image -->
   <section class="px-6 pb-10">
     <div class="max-w-3xl mx-auto overflow-hidden stamp-card postal-frame">
       <img
@@ -24,6 +26,29 @@ import Layout from '../layouts/Layout.astro';
     </div>
   </section>
 
+  <!-- Chiffres cles -->
+  <section class="px-6 pb-12">
+    <div class="max-w-3xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-4">
+      <div class="stamp-card paper p-5 text-center">
+        <p class="font-serif text-2xl font-semibold text-stone-900">1926</p>
+        <p class="text-[12px] text-stone-500 mt-1">Origines du club</p>
+      </div>
+      <div class="stamp-card paper p-5 text-center">
+        <p class="font-serif text-2xl font-semibold text-stone-900">100</p>
+        <p class="text-[12px] text-stone-500 mt-1">Ans en 2026</p>
+      </div>
+      <div class="stamp-card paper p-5 text-center">
+        <p class="font-serif text-2xl font-semibold text-stone-900">1939</p>
+        <p class="text-[12px] text-stone-500 mt-1">F&ecirc;te du Timbre &agrave; Valence</p>
+      </div>
+      <div class="stamp-card paper p-5 text-center">
+        <p class="font-serif text-2xl font-semibold text-stone-900">VIII-226</p>
+        <p class="text-[12px] text-stone-500 mt-1">N&deg; FFAP</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Poeme -->
   <section class="px-6 pb-12">
     <div class="max-w-2xl mx-auto stamp-card postal-frame paper p-8 md:p-12">
       <h2 class="font-serif text-[1.5rem] md:text-[1.7rem] font-semibold text-stone-900 text-center mb-8">
@@ -50,35 +75,73 @@ import Layout from '../layouts/Layout.astro';
     </div>
   </section>
 
+  <!-- Prose + faits -->
   <section class="px-6 pb-12">
     <div class="max-w-2xl mx-auto stamp-card postal-frame paper p-8 md:p-10 space-y-5 body-text">
+      <h2 class="font-serif text-xl font-semibold text-stone-900">Un si&egrave;cle &agrave; Valence</h2>
       <p>
         Depuis 1926, l&rsquo;Association Philat&eacute;lique de Valence rassemble ceux qui aiment le timbre,
         l&rsquo;histoire postale et les &eacute;changes simples.
-      </p>
-      <p>
         Un si&egrave;cle plus tard, le club est toujours l&agrave;, fid&egrave;le &agrave; cet esprit amical.
-        En 2026, nous f&ecirc;tons ces cent ans.
       </p>
       <p>
-        Pour marquer cet anniversaire, l&rsquo;APV accueille les <strong>20 et 21 juin 2026</strong>
-        le congr&egrave;s r&eacute;gional <strong>Expophil Rh&ocirc;ne-Alpes</strong>,
-        &agrave; la Maison de la Vie Associative.
+        Affili&eacute;e &agrave; la <strong>FFAP</strong> (n&deg; VIII-226), l&rsquo;APV organise chaque ann&eacute;e
+        la <strong>F&ecirc;te du Timbre</strong> en partenariat avec La Poste.
+        &Agrave; Valence, cette manifestation existe depuis <strong>1939</strong>.
       </p>
       <p>
-        <a href="/actualites/expophil-2026">D&eacute;couvrir Expophil 2026</a>
+        Les permanences du <strong>jeudi apr&egrave;s-midi</strong>, &agrave; la Maison de la Vie Associative
+        (74 route de Mont&eacute;lier), restent le c&oelig;ur de la vie du club :
+        on y &eacute;change, on compare, on se conseille.
       </p>
     </div>
   </section>
 
+  <!-- Expophil -->
+  <section class="px-6 pb-12">
+    <div class="max-w-2xl mx-auto stamp-card postal-frame paper p-8 md:p-10 text-center">
+      <p class="text-[11px] font-semibold tracking-[0.18em] text-[#a67443] uppercase mb-4">&Eacute;v&eacute;nement 2026</p>
+      <h2 class="font-serif text-[1.6rem] font-semibold text-stone-900 mb-3">Expophil Rh&ocirc;ne-Alpes</h2>
+      <p class="body-text mb-2">
+        Congr&egrave;s r&eacute;gional et centenaire de l&rsquo;APV
+      </p>
+      <p class="text-stone-500 text-[14px] mb-8">
+        Samedi 20 et dimanche 21 juin 2026<br />
+        Maison de la Vie Associative &mdash; Valence
+      </p>
+      <a href="/actualites/expophil-2026" class="inline-flex text-[13px] font-medium text-primary-700 hover:text-primary-900 transition">
+        D&eacute;couvrir Expophil 2026
+      </a>
+    </div>
+  </section>
+
+  <!-- Liens utiles -->
+  <section class="px-6 pb-12">
+    <div class="max-w-2xl mx-auto grid sm:grid-cols-3 gap-4">
+      <a href="/association" class="stamp-card paper p-5 text-center hover:shadow-sm transition">
+        <p class="font-serif font-semibold text-stone-900 text-[15px]">L&apos;Association</p>
+        <p class="text-[12px] text-stone-500 mt-1">Histoire du club</p>
+      </a>
+      <a href="/jeu" class="stamp-card paper p-5 text-center hover:shadow-sm transition">
+        <p class="font-serif font-semibold text-stone-900 text-[15px]">La Loupe</p>
+        <p class="text-[12px] text-stone-500 mt-1">Jeu philat&eacute;lique</p>
+      </a>
+      <a href="/adhesion" class="stamp-card paper p-5 text-center hover:shadow-sm transition">
+        <p class="font-serif font-semibold text-stone-900 text-[15px]">Nous rejoindre</p>
+        <p class="text-[12px] text-stone-500 mt-1">Adh&eacute;rer &agrave; l&rsquo;APV</p>
+      </a>
+    </div>
+  </section>
+
+  <!-- Appel -->
   <section class="px-6 pb-20">
     <div class="max-w-2xl mx-auto perforated p-8 text-center">
       <p class="font-serif text-lg text-stone-800 mb-3">Venez f&ecirc;ter le centenaire avec nous</p>
       <p class="body-text mb-6">
         R&eacute;unions le jeudi apr&egrave;s-midi &middot; Maison de la Vie Associative, Valence
       </p>
-      <a href="/adhesion" class="inline-flex items-center justify-center border border-stone-400 bg-[#faf7f2] text-stone-800 px-8 py-3 rounded-lg text-[13px] font-medium hover:bg-white transition">
-        Nous rejoindre
+      <a href="/contact" class="inline-flex items-center justify-center border border-stone-400 bg-[#faf7f2] text-stone-800 px-8 py-3 rounded-lg text-[13px] font-medium hover:bg-white transition">
+        Contact
       </a>
     </div>
   </section>
