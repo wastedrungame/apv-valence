@@ -1,0 +1,198 @@
+---
+import Layout from '../layouts/Layout.astro';
+import annonces from '../data/annonces-bourse.json';
+
+const categories = [
+  "France",
+  "Colonies",
+  "Europe",
+  "Monde",
+  "Thématique",
+  "Cartes postales",
+  "Histoire postale",
+  "Autre"
+];
+---
+
+<Layout title="Bourse d'échange - APV Valence" description="Bourse d'échange de timbres de l'Association Philatélique de Valence. Proposez ou recherchez des timbres.">
+
+  <section class="px-6 pt-16 pb-8 md:pt-24 md:pb-10 text-center">
+    <div class="max-w-2xl mx-auto">
+      <p class="page-subtitle">Échanges entre collectionneurs</p>
+      <h1 class="page-title">Bourse d'échange</h1>
+      <p class="body-text">
+        Proposez ou recherchez des timbres, cartes postales et pièces d'histoire postale.
+        Les annonces sont validées par l'association avant publication.
+      </p>
+    </div>
+  </section>
+
+  <!-- Règles -->
+  <section class="px-6 pb-10">
+    <div class="max-w-2xl mx-auto stamp-card postal-frame paper p-6 md:p-8 body-text text-[14px]">
+      <p class="font-serif font-semibold text-stone-900 mb-3">Règles simples</p>
+      <ul class="space-y-1.5 text-stone-600 list-disc list-inside">
+        <li>Annonces réservées aux échanges amicaux (pas de vente commerciale).</li>
+        <li>L'APV valide chaque annonce avant publication.</li>
+        <li>Le contact se fait directement entre collectionneurs.</li>
+        <li>L'association ne gère ni paiements ni envois.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Filtres -->
+  <section class="px-6 pb-6">
+    <div class="max-w-2xl mx-auto flex flex-wrap gap-2 justify-center" id="filtres">
+      <button type="button" data-filter="all" class="filtre-btn active px-3 py-1.5 rounded-lg text-[12px] font-medium border border-stone-400 bg-stone-800 text-white transition">
+        Toutes
+      </button>
+      <button type="button" data-filter="propose" class="filtre-btn px-3 py-1.5 rounded-lg text-[12px] font-medium border border-stone-300 bg-white text-stone-700 hover:bg-stone-50 transition">
+        Je propose
+      </button>
+      <button type="button" data-filter="cherche" class="filtre-btn px-3 py-1.5 rounded-lg text-[12px] font-medium border border-stone-300 bg-white text-stone-700 hover:bg-stone-50 transition">
+        Je cherche
+      </button>
+    </div>
+  </section>
+
+  <!-- Liste des annonces -->
+  <section class="px-6 pb-14">
+    <div class="max-w-2xl mx-auto space-y-4" id="liste-annonces">
+      {annonces.length === 0 ? (
+        <div class="stamp-card postal-frame paper p-8 text-center text-stone-500 text-[14px]">
+          Aucune annonce pour le moment.<br />Soyez le premier à en déposer une.
+        </div>
+      ) : (
+        annonces.map((a) => (
+          <article
+            class="annonce stamp-card postal-frame paper p-6"
+            data-type={a.type}
+            data-categorie={a.categorie}
+          >
+            <div class="flex flex-wrap items-center gap-2 mb-3">
+              <span class={`text-[11px] font-semibold tracking-wide uppercase px-2.5 py-1 rounded border ${
+                a.type === "propose"
+                  ? "bg-emerald-50 text-emerald-800 border-emerald-200"
+                  : "bg-sky-50 text-sky-800 border-sky-200"
+              }`}>
+                {a.type === "propose" ? "Je propose" : "Je cherche"}
+              </span>
+              <span class="text-[11px] text-stone-500 border border-stone-200 px-2 py-1 rounded">
+                {a.categorie}
+              </span>
+              <span class="text-[12px] text-stone-400 ml-auto">{a.date}</span>
+            </div>
+            <h2 class="font-serif font-semibold text-stone-900 text-[1.05rem] mb-2">{a.titre}</h2>
+            <p class="text-[14px] text-stone-600 leading-relaxed mb-4">{a.description}</p>
+            <a
+              href={`mailto:${a.contact}?subject=${encodeURIComponent("Bourse APV — " + a.titre)}`}
+              class="inline-flex text-[13px] font-medium text-primary-700 hover:text-primary-900 transition"
+            >
+              Contacter {a.nom || "l'annonceur"}
+            </a>
+          </article>
+        ))
+      )}
+      <p id="aucune-filtre" class="hidden text-center text-stone-500 text-[14px] py-6">
+        Aucune annonce pour ce filtre.
+      </p>
+    </div>
+  </section>
+
+  <!-- Formulaire dépôt -->
+  <section class="px-6 pb-20" id="deposer">
+    <div class="max-w-2xl mx-auto stamp-card postal-frame paper p-8 md:p-10">
+      <h2 class="font-serif text-xl font-semibold text-stone-900 mb-1 text-center">Déposer une annonce</h2>
+      <p class="text-[13px] text-stone-500 text-center mb-8">
+        Votre annonce sera publiée après validation par l'association.
+      </p>
+
+      <form name="bourse" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="space-y-4">
+        <input type="hidden" name="form-name" value="bourse" />
+        <p class="hidden">
+          <label>Ne pas remplir : <input name="bot-field" /></label>
+        </p>
+
+        <div class="grid sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-[13px] text-stone-600 mb-1">Type</label>
+            <select name="type" required class="w-full border border-stone-300 rounded-lg px-3 py-2 text-[14px] bg-white focus:outline-none focus:border-stone-500">
+              <option value="">Choisir…</option>
+              <option value="propose">Je propose</option>
+              <option value="cherche">Je cherche</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-[13px] text-stone-600 mb-1">Catégorie</label>
+            <select name="categorie" required class="w-full border border-stone-300 rounded-lg px-3 py-2 text-[14px] bg-white focus:outline-none focus:border-stone-500">
+              <option value="">Choisir…</option>
+              {categories.map((c) => <option value={c}>{c}</option>)}
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <label for="titre" class="block text-[13px] text-stone-600 mb-1">Titre</label>
+          <input type="text" id="titre" name="titre" required maxlength="80"
+            placeholder="Ex. Timbres colonies françaises"
+            class="w-full border border-stone-300 rounded-lg px-3 py-2 text-[14px] focus:outline-none focus:border-stone-500" />
+        </div>
+
+        <div>
+          <label for="description" class="block text-[13px] text-stone-600 mb-1">Description</label>
+          <textarea id="description" name="description" rows="4" required maxlength="600"
+            placeholder="État, période, quantité, ce que vous cherchez en échange…"
+            class="w-full border border-stone-300 rounded-lg px-3 py-2 text-[14px] focus:outline-none focus:border-stone-500"></textarea>
+        </div>
+
+        <div class="grid sm:grid-cols-2 gap-4">
+          <div>
+            <label for="nom" class="block text-[13px] text-stone-600 mb-1">Votre nom</label>
+            <input type="text" id="nom" name="nom" required
+              class="w-full border border-stone-300 rounded-lg px-3 py-2 text-[14px] focus:outline-none focus:border-stone-500" />
+          </div>
+          <div>
+            <label for="email" class="block text-[13px] text-stone-600 mb-1">Email de contact</label>
+            <input type="email" id="email" name="email" required
+              class="w-full border border-stone-300 rounded-lg px-3 py-2 text-[14px] focus:outline-none focus:border-stone-500" />
+          </div>
+        </div>
+
+        <button type="submit"
+          class="w-full border border-stone-400 bg-[#faf7f2] text-stone-800 px-6 py-3 rounded-lg text-[13px] font-medium hover:bg-white transition">
+          Envoyer pour validation
+        </button>
+      </form>
+    </div>
+  </section>
+
+  <script>
+    const boutons = document.querySelectorAll('.filtre-btn');
+    const annonces = document.querySelectorAll('.annonce');
+    const vide = document.getElementById('aucune-filtre');
+
+    boutons.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const filtre = btn.getAttribute('data-filter');
+
+        boutons.forEach((b) => {
+          b.classList.remove('active', 'bg-stone-800', 'text-white', 'border-stone-400');
+          b.classList.add('bg-white', 'text-stone-700', 'border-stone-300');
+        });
+        btn.classList.add('active', 'bg-stone-800', 'text-white', 'border-stone-400');
+        btn.classList.remove('bg-white', 'text-stone-700', 'border-stone-300');
+
+        let visibles = 0;
+        annonces.forEach((a) => {
+          const type = a.getAttribute('data-type');
+          const ok = filtre === 'all' || type === filtre;
+          a.style.display = ok ? '' : 'none';
+          if (ok) visibles++;
+        });
+
+        if (vide) vide.classList.toggle('hidden', visibles > 0 || annonces.length === 0);
+      });
+    });
+  </script>
+
+</Layout>
