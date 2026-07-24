@@ -1,0 +1,4 @@
+﻿User-agent: *
+Allow: /
+
+Sitemap: https://apv-valence.netlify.app/sitemap-index.xml
