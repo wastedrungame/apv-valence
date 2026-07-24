@@ -40,18 +40,25 @@ const categories = [
     </div>
   </section>
 
-  <!-- Filtres -->
+    <!-- Filtres -->
   <section class="px-6 pb-6">
-    <div class="max-w-2xl mx-auto flex flex-wrap gap-2 justify-center" id="filtres">
-      <button type="button" data-filter="all" class="filtre-btn active px-3 py-1.5 rounded-lg text-[12px] font-medium border border-stone-400 bg-stone-800 text-white transition">
-        Toutes
-      </button>
-      <button type="button" data-filter="propose" class="filtre-btn px-3 py-1.5 rounded-lg text-[12px] font-medium border border-stone-300 bg-white text-stone-700 hover:bg-stone-50 transition">
-        Je propose
-      </button>
-      <button type="button" data-filter="cherche" class="filtre-btn px-3 py-1.5 rounded-lg text-[12px] font-medium border border-stone-300 bg-white text-stone-700 hover:bg-stone-50 transition">
-        Je cherche
-      </button>
+    <div class="max-w-2xl mx-auto space-y-3">
+      <div class="flex flex-wrap gap-2 justify-center" id="filtres-type">
+        <button type="button" data-type="all" class="filtre-type active px-3 py-1.5 rounded-lg text-[12px] font-medium border border-stone-400 bg-stone-800 text-white transition">Toutes</button>
+        <button type="button" data-type="propose" class="filtre-type px-3 py-1.5 rounded-lg text-[12px] font-medium border border-stone-300 bg-white text-stone-700 hover:bg-stone-50 transition">Je propose</button>
+        <button type="button" data-type="cherche" class="filtre-type px-3 py-1.5 rounded-lg text-[12px] font-medium border border-stone-300 bg-white text-stone-700 hover:bg-stone-50 transition">Je cherche</button>
+      </div>
+      <div class="flex flex-wrap gap-2 justify-center" id="filtres-cat">
+        <button type="button" data-cat="all" class="filtre-cat active px-2.5 py-1 rounded-lg text-[11px] font-medium border border-stone-400 bg-stone-800 text-white transition">Toutes catégories</button>
+        <button type="button" data-cat="France" class="filtre-cat px-2.5 py-1 rounded-lg text-[11px] font-medium border border-stone-300 bg-white text-stone-700 hover:bg-stone-50 transition">France</button>
+        <button type="button" data-cat="Colonies" class="filtre-cat px-2.5 py-1 rounded-lg text-[11px] font-medium border border-stone-300 bg-white text-stone-700 hover:bg-stone-50 transition">Colonies</button>
+        <button type="button" data-cat="Europe" class="filtre-cat px-2.5 py-1 rounded-lg text-[11px] font-medium border border-stone-300 bg-white text-stone-700 hover:bg-stone-50 transition">Europe</button>
+        <button type="button" data-cat="Monde" class="filtre-cat px-2.5 py-1 rounded-lg text-[11px] font-medium border border-stone-300 bg-white text-stone-700 hover:bg-stone-50 transition">Monde</button>
+        <button type="button" data-cat="Thématique" class="filtre-cat px-2.5 py-1 rounded-lg text-[11px] font-medium border border-stone-300 bg-white text-stone-700 hover:bg-stone-50 transition">Thématique</button>
+        <button type="button" data-cat="Cartes postales" class="filtre-cat px-2.5 py-1 rounded-lg text-[11px] font-medium border border-stone-300 bg-white text-stone-700 hover:bg-stone-50 transition">Cartes postales</button>
+        <button type="button" data-cat="Histoire postale" class="filtre-cat px-2.5 py-1 rounded-lg text-[11px] font-medium border border-stone-300 bg-white text-stone-700 hover:bg-stone-50 transition">Histoire postale</button>
+        <button type="button" data-cat="Autre" class="filtre-cat px-2.5 py-1 rounded-lg text-[11px] font-medium border border-stone-300 bg-white text-stone-700 hover:bg-stone-50 transition">Autre</button>
+      </div>
     </div>
   </section>
 
@@ -166,31 +173,58 @@ const categories = [
     </div>
   </section>
 
-  <script>
-    const boutons = document.querySelectorAll('.filtre-btn');
+    <script>
+    let typeActif = 'all';
+    let catActive = 'all';
+
+    const boutonsType = document.querySelectorAll('.filtre-type');
+    const boutonsCat = document.querySelectorAll('.filtre-cat');
     const annonces = document.querySelectorAll('.annonce');
     const vide = document.getElementById('aucune-filtre');
 
-    boutons.forEach((btn) => {
+    function appliquerFiltres() {
+      let visibles = 0;
+      annonces.forEach((a) => {
+        const type = a.getAttribute('data-type');
+        const cat = a.getAttribute('data-categorie');
+        const okType = typeActif === 'all' || type === typeActif;
+        const okCat = catActive === 'all' || cat === catActive;
+        const ok = okType && okCat;
+        a.style.display = ok ? '' : 'none';
+        if (ok) visibles++;
+      });
+      if (vide) {
+        vide.classList.toggle('hidden', visibles > 0 || annonces.length === 0);
+      }
+    }
+
+    function styleBoutons(boutons, actifAttr, valeur) {
+      boutons.forEach((b) => {
+        const v = b.getAttribute(actifAttr);
+        const actif = v === valeur;
+        b.classList.toggle('active', actif);
+        b.classList.toggle('bg-stone-800', actif);
+        b.classList.toggle('text-white', actif);
+        b.classList.toggle('border-stone-400', actif);
+        b.classList.toggle('bg-white', !actif);
+        b.classList.toggle('text-stone-700', !actif);
+        b.classList.toggle('border-stone-300', !actif);
+      });
+    }
+
+    boutonsType.forEach((btn) => {
       btn.addEventListener('click', () => {
-        const filtre = btn.getAttribute('data-filter');
+        typeActif = btn.getAttribute('data-type');
+        styleBoutons(boutonsType, 'data-type', typeActif);
+        appliquerFiltres();
+      });
+    });
 
-        boutons.forEach((b) => {
-          b.classList.remove('active', 'bg-stone-800', 'text-white', 'border-stone-400');
-          b.classList.add('bg-white', 'text-stone-700', 'border-stone-300');
-        });
-        btn.classList.add('active', 'bg-stone-800', 'text-white', 'border-stone-400');
-        btn.classList.remove('bg-white', 'text-stone-700', 'border-stone-300');
-
-        let visibles = 0;
-        annonces.forEach((a) => {
-          const type = a.getAttribute('data-type');
-          const ok = filtre === 'all' || type === filtre;
-          a.style.display = ok ? '' : 'none';
-          if (ok) visibles++;
-        });
-
-        if (vide) vide.classList.toggle('hidden', visibles > 0 || annonces.length === 0);
+    boutonsCat.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        catActive = btn.getAttribute('data-cat');
+        styleBoutons(boutonsCat, 'data-cat', catActive);
+        appliquerFiltres();
       });
     });
   </script>
